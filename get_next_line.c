@@ -6,92 +6,98 @@
 /*   By: mring <mring@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 10:51:38 by mring             #+#    #+#             */
-/*   Updated: 2024/03/08 14:42:41 by mring            ###   ########.fr       */
+/*   Updated: 2024/03/15 18:55:30 by mring            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
-char	*ft_strjoin(char *s1, char const *s2, size_t length)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	char	*string;
-	int		s1_len;
-	int		s2_len;
-
-	if (!s1 || !s2)
-		return (NULL);
-	s1_len = ft_strlen(s1);
-	s2_len = length;
-	string = (char *)malloc(s1_len + s2_len + 1 * sizeof(char));
-	if (!string)
-		return (NULL);
-	//cpystr(string, s1, s1_len + 1);
-	cpystr((string + s1_len), s2, s2_len +1);
-	free(s1);
-	return (string);
-}
-
-char	cpystr(char *dst, const char *src, size_t dstsize)
-{
-	size_t	src_length;
+	size_t	srclen;
 	size_t	i;
 
-	src_length = ft_strlen(src);
+	srclen = ft_strlen(src);
 	i = 0;
 	if (dstsize > 0)
 	{
-		while (i < src_length & i < dstsize - 1)
+		while (i < srclen && i < dstsize - 1)
 		{
 			dst[i] = src[i];
 			i++;
 		}
 		dst[i] = '\0';
 	}
-	return (src_length);
+	return (srclen);
 }
 
-int	ft_strlen(const char *src)
-{
-	int	count;
-
-	count = 0;
-	while (src[count] != 0)
-		count++;
-	return (count);
-}
-
-char	*ft_strdup(const char *src)
+char	*ft_strdup(const char *s)
 {
 	char	*dst;
-	int		length;
+	size_t	strlen;
 	size_t	i;
 
-	length = ft_strlen(src) + 1;
 	i = 0;
-	dst = malloc(length);
+	strlen = ft_strlen(s) + 1;
+	dst = malloc(strlen);
 	if (!dst)
 		return (NULL);
-	cpystr(dst, src, length);
+	ft_strlcpy(dst, s, strlen);
 	return (dst);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s)
+	{
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
+	}
+	return (NULL);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	buf[BUFFER_SIZE + 1];
 	char		*line;
-	// char		*next_line;
+	char		*next_line;
 	int			amountread;
-	// int			leftover;
+	int			to_copy;
 
-	line = ft_strdup(buf);
 	amountread = read(fd, buf, BUFFER_SIZE);
-	line = ft_strjoin(line, buf, amountread);
-	printf("%d\n", fd);
-	printf("buf:\n%s\n", buf);
-	printf("\nline:\n%s\n", line);
-	return (line);
+	line = ft_strdup(buf);
+	printf("b:\n%s\n", buf);
+	printf("\nl:\n%s\n", line);
+	printf("\nar:%i\n", amountread);
+	next_line = ft_strchr(line, '\n');
+	printf("\nnl:%s\n", next_line);
+	to_copy = next_line - line + 1;
+	printf("\ntc:%i\n", to_copy);
+	
+	return (0);
 }
+
+// get_next_line
+// char *get_next_line(int fd);
+// get_next_line.c, get_next_line_utils.c, get_next_line.h
+// fd: The file descriptor to read from
+// Return value
+// Read line: correct behavior
+// NULL: there is nothing else to read, or an error occurred
+// read, malloc, free
+// Description:
+// Write a function that returns a line read from a file descriptor
 
 // get_next_line reads the file descriptor 
 // until the buffer is full or end of file is reached.

@@ -1,0 +1,28 @@
+Because you will have to read files in 
+get_next_line(), add this option to your compiler call:
+-D BUFFER_SIZE=n
+it will define the buffer size for read()
+
+Must be able to compile with and without the flag
+
+compile like this:
+cc -Wall -Wextra -Werror -D BUFFER_SUZE=42 <files>.c
+
+undefined behavior if file changed since last call of read() didn't reach end of file
+
+undefined behavior for binary files, can impement it if i want to
+
+? does it work with buffer_size 9999? 1? 1000000? Do i know why?
+
+
+forbidden:
+- libft
+- lseek()
+- global variables
+
+bonus:
+- only one static variable
+- can manage multipe file descriptors at the same time
+example: call 3 4 or 5 without losing the reading thread of each fd.
+be able to call 3, then 4, then 5, then continue on 3.
+

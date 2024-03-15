@@ -6,7 +6,7 @@
 /*   By: mring <mring@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 10:51:44 by mring             #+#    #+#             */
-/*   Updated: 2024/03/08 14:38:37 by mring            ###   ########.fr       */
+/*   Updated: 2024/03/15 18:08:19 by mring            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,20 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 4444
 # endif
 
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
 
+# include <stdio.h> // delete at end
+
 char	*get_next_line(int fd);
-char	cpystr(char *dst, const char *src, size_t dstsize);
-int		ft_strlen(const char *src);
+char	*ft_strchr(const char *s, int c);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+size_t	ft_strlen(const char *src);
 char	*ft_strdup(const char *src);
-char	*ft_strjoin(char *s1, char const *s2, size_t length);
+// char	*ft_strjoin(char *s1, char const *s2, size_t length);
 
 #endif
