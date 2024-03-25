@@ -6,7 +6,7 @@
 /*   By: mring <mring@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 10:51:44 by mring             #+#    #+#             */
-/*   Updated: 2024/03/20 19:15:53 by mring            ###   ########.fr       */
+/*   Updated: 2024/03/25 15:49:25 by mring            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 42
 # endif
 
 # include <unistd.h>
@@ -28,5 +28,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlen(const char *src);
 char	*ft_strdup(const char *src);
 char	*ft_strjoin(char *s1, char const *s2, size_t length);
+int		err_check(char *next_line, char *line, char *buf);
 
 #endif
