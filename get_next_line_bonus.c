@@ -6,7 +6,7 @@
 /*   By: mring <mring@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 10:51:38 by mring             #+#    #+#             */
-/*   Updated: 2024/03/25 16:39:06 by mring            ###   ########.fr       */
+/*   Updated: 2024/03/25 15:50:42 by mring            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	line = ft_strdup(buf[fd]);
-	if (!line)
-		return (free(line), NULL);
 	amountread = 1;
 	while (!(ft_strchr(line, '\n')) && amountread > 0)
 	{
