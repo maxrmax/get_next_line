@@ -6,11 +6,12 @@
 /*   By: mring <mring@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 10:51:38 by mring             #+#    #+#             */
-/*   Updated: 2024/03/25 16:39:06 by mring            ###   ########.fr       */
+/*   Updated: 2024/04/08 05:36:08 by mring            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 char	*get_next_line(int fd)
 {

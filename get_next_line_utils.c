@@ -6,12 +6,12 @@
 /*   By: mring <mring@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 10:51:49 by mring             #+#    #+#             */
-/*   Updated: 2024/03/25 16:45:14 by mring            ###   ########.fr       */
+/*   Updated: 2024/04/08 02:12:21 by mring            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
+// length = amountread
 char	*ft_strjoin(char *s1, char const *s2, size_t length)
 {
 	char		*string;
@@ -36,17 +36,14 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	size_t	srclen;
 	size_t	i;
 
-	srclen = ft_strlen(src);
+	srclen = dstsize;
 	i = 0;
-	if (dstsize >= 0)
+	while (src[i] && i < dstsize - 1)
 	{
-		while (i < srclen && i < dstsize - 1)
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
+		dst[i] = src[i];
+		i++;
 	}
+	dst[i] = '\0';
 	return (srclen);
 }
 
